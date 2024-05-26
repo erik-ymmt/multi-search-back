@@ -33,39 +33,33 @@ public class SearchController {
 
 				if (files != null) {
 					for (File file : files) {
-							List<Object> fileResults = mapper.readValue(file, new TypeReference<List<Object>>() {});
-							for (Object result : fileResults) {
-									if (!(result instanceof Map)) continue;
-									Map<String, Object> resultMap = (Map<String, Object>) result;
-									for (Object value : resultMap.values()) {
+							List<Map<String, Object>> fileResults = mapper.readValue(file, new TypeReference<>() {});
+							for (Map<String, Object> result : fileResults) {
+									for (Object value : result.values()) {
 										if (value.toString().toLowerCase().contains(searchTerm.toLowerCase())) {
-												// System.out.println(value);
-												// System.out.println(file.getName());
-												if ("equipments.json".equals(file.getName())) {
-													equipments.add(resultMap);
+											switch (file.getName()) {
+												case "equipments.json":
+													equipments.add(result);
 													resultCount++;
 													break;
-												}
-												if ("materials.json".equals(file.getName())) {
-													materials.add(resultMap);
+												case "materials.json":
+													materials.add(result);
 													resultCount++;
 													break;
-												}
-												if ("purchase_orders.json".equals(file.getName())) {
-													purchaseOrders.add(resultMap);
+												case "purchase_orders.json":
+													purchaseOrders.add(result);
 													resultCount++;
 													break;
-												}
-												if ("sales_orders.json".equals(file.getName())) {
-													salesOrders.add(resultMap);
+												case "sales_orders.json":
+													salesOrders.add(result);
 													resultCount++;
 													break;
-												}
-												if ("workforce.json".equals(file.getName())) {
-													workforce.add(resultMap);
+												case "workforce.json":
+													workforce.add(result);
 													resultCount++;
 													break;
-												}
+											}
+											break;
 										}
 								}
 							}
@@ -78,8 +72,7 @@ public class SearchController {
 				return searchResult;
 		} catch (IOException e) {
 				System.err.println("Error: " + e.getMessage());
-				SearchData searchResult = new SearchData();
-				return searchResult;
+				return new SearchData();
 		}
 	}
 }

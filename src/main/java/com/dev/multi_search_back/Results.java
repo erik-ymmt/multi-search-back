@@ -2,7 +2,7 @@ package com.dev.multi_search_back;
 
 import java.util.List;
 
-class Results {
+public class Results {
   public List<Object> SalesOrders;
   public List<Object> PurchaseOrders;
   public List<Object> Materials;
