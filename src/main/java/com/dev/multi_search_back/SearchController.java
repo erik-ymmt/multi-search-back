@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 public class SearchController {
+
+	@CrossOrigin
 	@GetMapping("/search")
 	public SearchData search(@RequestParam(value = "q") String searchTerm) {
 		ObjectMapper mapper = new ObjectMapper();
@@ -71,6 +74,7 @@ public class SearchController {
 
 				Results allResults = new Results(salesOrders, purchaseOrders, materials, equipments, workforce);
 				SearchData searchResult = new SearchData(resultCount, allResults);
+				System.out.println(resultCount);
 				return searchResult;
 		} catch (IOException e) {
 				System.err.println("Error: " + e.getMessage());
