@@ -68,7 +68,7 @@ public class SearchController {
 
 				Results allResults = new Results(salesOrders, purchaseOrders, materials, equipments, workforce);
 				SearchData searchResult = new SearchData(resultCount, allResults);
-				System.out.println(resultCount);
+				System.out.println("Search Term: " + searchTerm + " | Results:" + resultCount);
 				return searchResult;
 		} catch (IOException e) {
 				System.err.println("Error: " + e.getMessage());
