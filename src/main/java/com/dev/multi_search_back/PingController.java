@@ -9,6 +9,7 @@ public class PingController {
 	@CrossOrigin
 	@GetMapping("/ping")
 	public Ping ping() {
+			System.out.println("Pong!");
 			return new Ping("Pong! Server is running.");
 	}
 }
