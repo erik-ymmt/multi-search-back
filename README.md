@@ -13,6 +13,7 @@
 
   OU
 - Faça um clone do repositório;
+- Certifique-se que possui JDK e Maven instalados;
 - Navegue até a raiz e inicie a aplicação (MultiSearchBackApplication.java) da maneira que preferir (algumas IDEs já possuem um início rápido) ou através do comando `./mvnw spring-boot:run`;
 - O frontend irá chamar a porta 8080, o backend está configurado para rodá-la como padrão, portanto, certifique-se que ela está livre.
 - Pronto! Agora é possível realizar as buscas pelo [frontend](https://github.com/erik-ymmt/multi-search-front).
